@@ -40,6 +40,6 @@ var addCmd = &cobra.Command{
 // todo add <list> <new teak> OR <new task>
 // todo switchTaskList <another list>
 // todo I_did <list> <your teak> OR <your task>
-// todo list <list>
+// todo list <list> (coming soon ?)
 // todo listAll
-// todo delete <list> <new teak>
+// todo delete <list> <teak>

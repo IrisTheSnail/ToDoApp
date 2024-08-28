@@ -1,0 +1,1 @@
+Note : code quality was the most prioritised in the making of this app.
