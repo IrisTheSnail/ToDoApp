@@ -1,0 +1,14 @@
+with-expecter: true
+packages:
+  todo/pkg/task:
+    config:
+    interfaces:
+      Task:
+        config:
+      Tasklist:
+        config:
+  todo/pkg/persistence:
+    config:
+    interfaces:
+      Persistence:
+        config:

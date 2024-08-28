@@ -7,7 +7,7 @@ import (
 
 func TestAdd(t *testing.T) {
 	taskList := task.TaskList{}
-	task := &task.Task{
+	task := task.Task{
 		Description: "new task",
 		Done:        false,
 	}
@@ -20,7 +20,6 @@ func TestAdd(t *testing.T) {
 	}
 
 	if taskList.Tasks[0].Description != task.Description ||
-		taskList.Tasks[0].Id != task.Id ||
 		taskList.Tasks[0].Done != task.Done {
 		t.Fatalf("expected taskList.Tasks[0] to be %v, found %v", task, taskList.Tasks[0])
 	}
@@ -29,20 +28,19 @@ func TestAdd(t *testing.T) {
 func TestGet(t *testing.T) {
 	taskList := task.TaskList{}
 
-	task1 := &task.Task{
+	task1 := task.Task{
 		Description: "new task",
 		Done:        false,
 	}
 
-	task2 := &task.Task{
+	task2 := task.Task{
 		Description: "new task 2",
 		Done:        false,
 	}
 
-	taskList.Add(task1)
-	taskList.Add(task2)
+	taskId2 := taskList.Add(task2)
 
-	broughtTask, isItThere := taskList.Get(task2.Id)
+	broughtTask, isItThere := taskList.Get(taskId2)
 
 	if !isItThere {
 		t.Fatal("expected broughtTask to be found")
@@ -50,6 +48,7 @@ func TestGet(t *testing.T) {
 
 	if task2.Description != broughtTask.Description ||
 		task2.Done != broughtTask.Done {
+		t.Logf("%v", broughtTask.Done)
 		t.Fatalf("expected broughtTask to be %v, found %v", task1, taskList.Tasks[0])
 	}
 
@@ -69,12 +68,12 @@ func TestGet(t *testing.T) {
 func TestGetAll(t *testing.T) {
 	taskList := task.TaskList{}
 
-	task1 := &task.Task{
+	task1 := task.Task{
 		Description: "new task",
 		Done:        false,
 	}
 
-	task2 := &task.Task{
+	task2 := task.Task{
 		Description: "new task 2",
 		Done:        false,
 	}
